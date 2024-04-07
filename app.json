@@ -17,7 +17,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.nfett10.expoboilerplate"
+      "bundleIdentifier": "com.nfett10.expoboilerplate",
+      "usesAppleSignIn": true
     },
     "android": {
       "adaptiveIcon": {
@@ -32,7 +33,8 @@
       "favicon": "./src/assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-apple-authentication"
     ],
     "experiments": {
       "typedRoutes": true

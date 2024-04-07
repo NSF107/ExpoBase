@@ -2,9 +2,11 @@ import { Button } from "react-native";
 import { makeRedirectUri } from "expo-auth-session";
 import * as QueryParams from "expo-auth-session/build/QueryParams";
 import * as WebBrowser from "expo-web-browser";
-import * as Linking from "expo-linking";
 import { supabase } from "@/utils/supabase";
 import { useRouter } from 'expo-router';
+import { Platform } from 'react-native'
+import * as AppleAuthentication from 'expo-apple-authentication'
+import { View } from "./Themed";
 
 WebBrowser.maybeCompleteAuthSession(); // required for web only
 const redirectTo = makeRedirectUri();
@@ -52,12 +54,63 @@ const performGoogleOAuth = async (router: any) => {
   }
 };
 
+const performAppleNativeAuth = async (router: any, credential: AppleAuthentication.AppleAuthenticationCredential) => {
+  // sign in with Apple
+  if (credential.identityToken) {
+    const {
+      error,
+      data: { user },
+    } = await supabase.auth.signInWithIdToken({
+      provider: 'apple',
+      token: credential.identityToken,
+    })
+    console.log(JSON.stringify({ error, user }, null, 2))
+    if (!error) {
+      // User is signed in.
+      router.replace('/home');
+    }
+  } else {
+    throw new Error('No identityToken.')
+  }
+};
+
 export default function Auth() {
   const router = useRouter();
 
-  return (
-    <>
+  if (Platform.OS === 'ios')
+    return (
+      <View>
+        <Button onPress={() => performGoogleOAuth(router)} title="Sign in with Google" />
+        <AppleAuthentication.AppleAuthenticationButton
+          buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
+          buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
+          cornerRadius={5}
+          style={{ width: 200, height: 64 }}
+          onPress={async () => {
+            try {
+              const credential = await AppleAuthentication.signInAsync({
+                requestedScopes: [
+                  AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+                  AppleAuthentication.AppleAuthenticationScope.EMAIL,
+                ],
+              })
+              // Sign in via Supabase Auth.
+              performAppleNativeAuth(router, credential);
+            } catch (e) {
+              if ((e as any).code === 'ERR_REQUEST_CANCELED') {
+                // handle that the user canceled the sign-in flow
+              } else {
+                // handle other errors
+              }
+            }
+          }}
+        />
+      </View>
+    )
+  else
+  {
+    return (
       <Button onPress={() => performGoogleOAuth(router)} title="Sign in with Google" />
-    </>
-  );
+    );
+  }
 }
