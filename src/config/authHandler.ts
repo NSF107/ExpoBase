@@ -69,3 +69,9 @@ export async function performAppleNativeAuth(router: any, credential: AppleAuthe
     throw new Error('No identityToken.')
   }
 };
+
+export async function signOut(router: any){
+  const { error } = await supabase.auth.signOut();
+  if (error) throw error;
+  router.replace('/login');
+};
