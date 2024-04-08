@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { Text, View } from "@/components/Themed";
-import Auth from "@/components/Auth";
+import AuthButtons from "@/components/AuthButtons";
 
 export default function Login() {
     return (
@@ -11,7 +11,7 @@ export default function Login() {
                 lightColor="#eee"
                 darkColor="rgba(255,255,255,0.1)"
             />
-            <Auth />
+            <AuthButtons />
         </View>
     );
 }
