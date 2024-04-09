@@ -1,10 +1,18 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { BottomTabBar } from "@react-navigation/bottom-tabs";
-import { Tabs } from "expo-router";
+import { Redirect, Tabs } from "expo-router";
 import React from "react";
 import { Platform, View, Text } from "react-native";
+import { useAuth } from "@/context/AuthProvider";
 
 export default function TabsLayout() {
+  const { session } = useAuth();
+  
+  // if the user is not logged in, redirect to the login page
+  if (!session) {
+    return <Redirect href="/login" />;
+  }
+
   return (
     <Tabs
       initialRouteName="home"

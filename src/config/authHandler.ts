@@ -22,7 +22,6 @@ const createSessionFromUrl = async (url: string) => {
     refresh_token,
   });
   if (error) throw error;
-  console.log( "session: ", data.session );
 
   return data.session;
 };
@@ -60,7 +59,7 @@ export async function performAppleNativeAuth(router: any, credential: AppleAuthe
       provider: 'apple',
       token: credential.identityToken,
     })
-    console.log(JSON.stringify({ error, user }, null, 2))
+    // console.log(JSON.stringify({ error, user }, null, 2))
     if (!error) {
       // User is signed in.
       router.replace('/home');
@@ -73,5 +72,6 @@ export async function performAppleNativeAuth(router: any, credential: AppleAuthe
 export async function signOut(router: any){
   const { error } = await supabase.auth.signOut();
   if (error) throw error;
+  console.log("User signed out");
   router.replace('/login');
 };
