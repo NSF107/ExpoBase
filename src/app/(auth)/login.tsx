@@ -1,19 +1,26 @@
 import { StyleSheet } from "react-native";
-import { Text, View } from "@/components/Themed";
-import AuthButtons from "@/components/AuthButtons";
+import SignInWithAppleButton from "@/components/auth/SignInWithAppleButton";
+import SignInWithGoogleButton from "@/components/auth/SignInWithGoogleButton";
+import { Platform, Text, View } from 'react-native';
 
 export default function Login() {
-    return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Login to your account</Text>
-            <View
-                style={styles.separator}
-                lightColor="#eee"
-                darkColor="rgba(255,255,255,0.1)"
-            />
-            <AuthButtons />
-        </View>
-    );
+    if (Platform.OS === 'ios') {
+        return (
+            <View style={styles.container}>
+                <Text style={styles.title}>ExpoBase: The free & open source React Native SaaS template</Text>
+                <SignInWithAppleButton />
+                <SignInWithGoogleButton />
+            </View>
+        );
+    }
+    else {
+        return (
+            <View style={styles.container}>
+                <Text style={styles.title}>ExpoBase: The free & open source React Native SaaS template</Text>
+                <SignInWithGoogleButton />
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({

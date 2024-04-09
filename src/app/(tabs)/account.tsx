@@ -1,5 +1,5 @@
 import { View, Text, Pressable } from "react-native";
-import SignOutButton from "@/components/SignOutButton";
+import SignOutButton from "@/components/auth/SignOutButton";
 
 export default function Accout() {
   
