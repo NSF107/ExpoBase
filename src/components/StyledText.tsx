@@ -1,4 +1,4 @@
-import { Text, TextProps } from 'react-native';
+import { Text, TextProps } from "react-native";
 
 export function MonoText(props: TextProps) {
     return (

@@ -1,65 +1,71 @@
-import React, { useContext, createContext, useState, useEffect } from 'react'
-import { Session, User } from '@supabase/supabase-js'
-import { supabase } from '@/config/supabase';
+import { Session, User } from "@supabase/supabase-js";
+import React, { useContext, createContext, useState, useEffect } from "react";
+
+import { supabase } from "@/config/supabase";
 
 interface AuthProviderProps {
-    children: React.ReactNode
+    children: React.ReactNode;
 }
 
 type AuthContextType = {
-    session: Session | null,
-    user: User | null
-}
+    session: Session | null;
+    user: User | null;
+};
 
 const AuthContext = createContext<AuthContextType>({
     session: null,
-    user: null
-})
+    user: null,
+});
 
 const AuthProvider = (props: AuthProviderProps) => {
-    const [user, setUser] = useState<User | null>(null)
-    const [session, setSession] = useState<Session | null>(null)
-    const [loading, setLoading] = useState<boolean>(true)
+    const [user, setUser] = useState<User | null>(null);
+    const [session, setSession] = useState<Session | null>(null);
+    const [, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-            setSession(session)
-            setUser(session?.user || null)
-            setLoading(false)
-        })
+        const { data: listener } = supabase.auth.onAuthStateChange(
+            (_event, session) => {
+                setSession(session);
+                setUser(session?.user || null);
+                setLoading(false);
+            },
+        );
 
         const setData = async () => {
-            const { data : {session}, error } = await supabase.auth.getSession()
+            const {
+                data: { session },
+                error,
+            } = await supabase.auth.getSession();
             if (error) {
-                throw error
+                throw error;
             }
 
-            setSession(session)
-            setUser(session?.user || null)
-            setLoading(false)
-        }
+            setSession(session);
+            setUser(session?.user || null);
+            setLoading(false);
+        };
 
-        setData()
-        
+        setData();
+
         return () => {
-            listener?.subscription.unsubscribe()    
-        }
-    }, [])
+            listener?.subscription.unsubscribe();
+        };
+    }, []);
 
     const value = {
         session,
-        user
-    }
+        user,
+    };
 
     return (
         <AuthContext.Provider value={value}>
             {props.children}
         </AuthContext.Provider>
-    )
-}
+    );
+};
 
 export const useAuth = () => {
-    return useContext(AuthContext)
-}
+    return useContext(AuthContext);
+};
 
-export default AuthProvider
+export default AuthProvider;

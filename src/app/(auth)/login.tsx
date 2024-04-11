@@ -1,23 +1,26 @@
+import { Platform, Text, View, StyleSheet } from "react-native";
+
 import SignInWithAppleButton from "@/components/auth/SignInWithAppleButton";
 import SignInWithGoogleButton from "@/components/auth/SignInWithGoogleButton";
-import { Platform, Text, View, StyleSheet } from 'react-native';
 
 export default function Login() {
     return (
         <View style={styles.container}>
             <View>
-                <Text style={styles.title}>
-                    ExpoBase{'\n'}
-                </Text>
-                <View style={styles.line}></View>
+                <Text style={styles.title}>ExpoBase{"\n"}</Text>
+                <View style={styles.line} />
                 <Text style={styles.paragraph}>
-                    {'\n'}
-                    This open-source template provides a solid foundation for developers to swiftly prototype, iterate, and launch their app.
-                    {'\n'}{'\n'}Tools:
+                    {"\n"}
+                    This open-source template provides a solid foundation for
+                    developers to swiftly prototype, iterate, and launch their
+                    app.
+                    {"\n"}
+                    {"\n"}Tools:
                 </Text>
                 <Text style={styles.toolList}>
                     {"\n"}⚡ Expo for mobile development
-                    {"\n"}🔒 Authentication with Supabase (Apple and Google Auth)
+                    {"\n"}🔒 Authentication with Supabase (Apple and Google
+                    Auth)
                     {"\n"}🔐 AuthContext for handling authentication state
                     {"\n"}⚛️ React Native for building native apps using React
                     {"\n"}🔥 Type checking with TypeScript
@@ -26,12 +29,21 @@ export default function Login() {
                     {"\n"}💖 Code Formatter with Prettier
                     {"\n"}🦺 Unit Testing with Jest and React Testing Library
                     {"\n"}💡 Absolute Imports using @ prefix
-                    {"\n"}{"\n"}
+                    {"\n"}
+                    {"\n"}
                 </Text>
             </View>
-            <View style={styles.line}></View>
+            <View style={styles.line} />
             <View style={styles.buttonContainer}>
-                {Platform.OS === 'ios' ? <><SignInWithAppleButton /><Text>{"\n"}</Text><SignInWithGoogleButton /></> : <SignInWithGoogleButton />}
+                {Platform.OS === "ios" ? (
+                    <>
+                        <SignInWithAppleButton />
+                        <Text>{"\n"}</Text>
+                        <SignInWithGoogleButton />
+                    </>
+                ) : (
+                    <SignInWithGoogleButton />
+                )}
             </View>
         </View>
     );
@@ -46,7 +58,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 40,
         fontWeight: "bold",
-        textAlign: 'left',
+        textAlign: "left",
     },
     toolList: {
         fontSize: 16,
@@ -56,12 +68,12 @@ const styles = StyleSheet.create({
     },
     line: {
         height: 1,
-        backgroundColor: 'black',
-        width: '100%',
+        backgroundColor: "black",
+        width: "100%",
     },
     buttonContainer: {
         marginTop: 20,
-        flexDirection: 'column',
-        alignItems: 'center',
+        flexDirection: "column",
+        alignItems: "center",
     },
 });
