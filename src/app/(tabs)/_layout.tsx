@@ -2,12 +2,15 @@ import { FontAwesome } from "@expo/vector-icons";
 import { BottomTabBar } from "@react-navigation/bottom-tabs";
 import { Redirect, Tabs } from "expo-router";
 import React from "react";
-import { Platform, View, Text } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 
+import { Text, View } from "@/components/theme/Themed";
+import { useColorScheme } from "@/components/theme/useColorScheme";
 import { useAuth } from "@/context/AuthProvider";
 
 export default function TabsLayout() {
     const { session } = useAuth();
+    const colorScheme = useColorScheme();
 
     // if the user is not logged in, redirect to the login page
     if (!session) {
@@ -18,9 +21,12 @@ export default function TabsLayout() {
         <Tabs
             initialRouteName="home"
             screenOptions={{
-                tabBarStyle: Platform.OS === "ios" && {
-                    backgroundColor: "transparent",
-                },
+                tabBarStyle:
+                    colorScheme === "dark"
+                        ? {
+                              backgroundColor: "black",
+                          }
+                        : { backgroundColor: "white" },
                 headerShown: false,
             }}
             tabBar={(props) =>
@@ -37,21 +43,12 @@ export default function TabsLayout() {
                     href: "/home",
                     title: "",
                     tabBarIcon: ({ color }) => (
-                        <View
-                            style={{
-                                flexDirection: "column",
-                                alignItems: "center",
-                                marginTop: 17,
-                                backgroundColor: "transparent",
-                            }}
-                        >
+                        <View style={styles.tabView}>
                             <TabBarIcon name="home" color={color} size={24} />
                             <Text
-                                style={{
-                                    marginTop: 5,
-                                    fontSize: 10,
-                                    opacity: 0.5,
-                                }}
+                                style={styles.text}
+                                lightColor="black"
+                                darkColor="white"
                             >
                                 Home
                             </Text>
@@ -67,21 +64,12 @@ export default function TabsLayout() {
                         pathname: "/account",
                     },
                     tabBarIcon: ({ color }) => (
-                        <View
-                            style={{
-                                flexDirection: "column",
-                                alignItems: "center",
-                                marginTop: 17,
-                                backgroundColor: "transparent",
-                            }}
-                        >
+                        <View style={styles.tabView}>
                             <TabBarIcon name="user" color={color} size={24} />
                             <Text
-                                style={{
-                                    marginTop: 5,
-                                    fontSize: 10,
-                                    opacity: 0.5,
-                                }}
+                                style={styles.text}
+                                lightColor="black"
+                                darkColor="white"
                             >
                                 Account
                             </Text>
@@ -106,3 +94,17 @@ function TabBarIcon(props: {
         />
     );
 }
+
+const styles = StyleSheet.create({
+    tabView: {
+        flexDirection: "column",
+        alignItems: "center",
+        marginTop: 17,
+        backgroundColor: "transparent",
+    },
+    text: {
+        marginTop: 5,
+        fontSize: 10,
+        opacity: 0.5,
+    },
+});

@@ -1,14 +1,19 @@
-import { Platform, Text, View, StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 
 import SignInWithAppleButton from "@/components/auth/SignInWithAppleButton";
 import SignInWithGoogleButton from "@/components/auth/SignInWithGoogleButton";
+import { Text, View } from "@/components/theme/Themed";
 
 export default function Login() {
     return (
         <View style={styles.container}>
             <View>
                 <Text style={styles.title}>ExpoBase{"\n"}</Text>
-                <View style={styles.line} />
+                <View
+                    lightColor="black"
+                    darkColor="white"
+                    style={styles.line}
+                />
                 <Text style={styles.paragraph}>
                     {"\n"}
                     This open-source template provides a solid foundation for
@@ -33,7 +38,7 @@ export default function Login() {
                     {"\n"}
                 </Text>
             </View>
-            <View style={styles.line} />
+            <View lightColor="black" darkColor="white" style={styles.line} />
             <View style={styles.buttonContainer}>
                 {Platform.OS === "ios" ? (
                     <>
@@ -68,7 +73,6 @@ const styles = StyleSheet.create({
     },
     line: {
         height: 1,
-        backgroundColor: "black",
         width: "100%",
     },
     buttonContainer: {
