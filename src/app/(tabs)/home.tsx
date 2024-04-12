@@ -1,6 +1,6 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
+import { Text, View } from "@/components/theme/Themed";
 import { useAuth } from "@/context/AuthProvider";
 
 export default function Home() {
@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         padding: 20,
-        backgroundColor: "#f0f0f0",
     },
     greeting: {
         fontSize: 24,

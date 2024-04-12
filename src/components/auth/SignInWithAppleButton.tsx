@@ -1,17 +1,21 @@
 import * as AppleAuthentication from "expo-apple-authentication";
 import { useRouter } from "expo-router";
 
+import { useColorScheme } from "@/components/theme/useColorScheme";
 import { performAppleNativeAuth } from "@/config/authHandler";
 
 export default function SignInWithAppleButton() {
     const router = useRouter();
+    const colorScheme = useColorScheme();
     return (
         <AppleAuthentication.AppleAuthenticationButton
             buttonType={
                 AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN
             }
             buttonStyle={
-                AppleAuthentication.AppleAuthenticationButtonStyle.BLACK
+                colorScheme === "dark"
+                    ? AppleAuthentication.AppleAuthenticationButtonStyle.WHITE
+                    : AppleAuthentication.AppleAuthenticationButtonStyle.BLACK
             }
             cornerRadius={5}
             style={{ width: 200, height: 64 }}

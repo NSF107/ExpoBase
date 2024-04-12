@@ -1,15 +1,14 @@
-import { View, Text } from "react-native";
+import { StyleSheet } from "react-native";
 
 import SignOutButton from "@/components/auth/SignOutButton";
+import { Text, View } from "@/components/theme/Themed";
 import { useAuth } from "@/context/AuthProvider";
 
 export default function Accout() {
     const { user } = useAuth();
 
     return (
-        <View
-            style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-        >
+        <View style={styles.container}>
             <Text>Account info:</Text>
             <Text>Email: {user?.email}</Text>
             <Text>
@@ -28,3 +27,11 @@ export default function Accout() {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+});
