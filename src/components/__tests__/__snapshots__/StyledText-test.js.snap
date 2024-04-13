@@ -1,18 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`has correct style 1`] = `
 <Text
   style={
     [
+      undefined,
       {
-        "color": "#000",
+        "fontFamily": "SpaceMono",
       },
-      [
-        undefined,
-        {
-          "fontFamily": "SpaceMono",
-        },
-      ],
     ]
   }
 >
