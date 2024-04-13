@@ -1,7 +1,7 @@
 import { Session, User } from "@supabase/supabase-js";
 import React, { useContext, createContext, useState, useEffect } from "react";
 
-import { supabase } from "@/config/supabase";
+import { supabase } from "@/config/supabaseClient";
 
 interface AuthProviderProps {
     children: React.ReactNode;
