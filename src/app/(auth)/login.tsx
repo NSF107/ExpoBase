@@ -1,10 +1,31 @@
-import { Platform, StyleSheet } from "react-native";
+import { FlatList, Platform, StyleSheet } from "react-native";
 
 import SignInWithAppleButton from "@/components/auth/SignInWithAppleButton";
 import SignInWithGoogleButton from "@/components/auth/SignInWithGoogleButton";
 import { Text, View } from "@/components/theme/Themed";
 
 export default function Login() {
+    const toolList = [
+        '⚡ Expo React Native for building native apps',
+        '🚀 Supabase Hosted Postges Database',
+        '🔒 Supabase Authentication (Apple and Google implemented, many more providers available)',
+        '🔐 AuthContext for handling authentication state',
+        // '📱 In-app purchases with Expo In-App-Purchases',
+        // '🔔 Push notifications with Expo Notifications',
+        // '📈 Performance Monitoring with Sentry',
+        '🔥 Type checking with TypeScript',
+        '📁 File-based routing with Expo Router',
+        '📏 Linter with ESLint',
+        '💖 Code Formatter with Prettier',
+        '🦺 Unit Testing with Jest and React Testing Library',
+        '📡 Github Actions for CI/CD (Lint, Test, Build, ect.)',
+        '📦 Integrated with Expo Application Services to build and publish the app',
+        '💡 Absolute Imports using @ prefix',
+        '🌈 Dark Mode support',
+        '📄 MIT License',
+        '\n'
+    ];
+
     return (
         <View style={styles.container}>
             <View>
@@ -14,36 +35,22 @@ export default function Login() {
                     darkColor="white"
                     style={styles.line}
                 />
-                <Text style={styles.paragraph}>
+                <Text style={styles.CTA}>
                     {"\n"}
-                    This open-source template provides a solid foundation for
-                    developers to swiftly prototype, iterate, and launch their
-                    app.
-                    {"\n"}
-                    {"\n"}Tools:
+                    The starter kit for building native apps with Expo and Supabase.{"\n"}
                 </Text>
-                <Text style={styles.toolList}>
-                    {"\n"}⚡ Expo for mobile development
-                    {"\n"}🔒 Authentication with Supabase (Apple and Google
-                    Auth)
-                    {"\n"}🔐 AuthContext for handling authentication state
-                    {"\n"}⚛️ React Native for building native apps using React
-                    {"\n"}🔥 Type checking with TypeScript
-                    {"\n"}📁 File-based routing with Expo Router
-                    {"\n"}📏 Linter with ESLint
-                    {"\n"}💖 Code Formatter with Prettier
-                    {"\n"}🦺 Unit Testing with Jest and React Testing Library
-                    {"\n"}💡 Absolute Imports using @ prefix
-                    {"\n"}
-                    {"\n"}
-                </Text>
+                <FlatList
+                    data={toolList}
+                    renderItem={({ item }) => <Text style={styles.toolList}>{item}</Text>}
+                    keyExtractor={item => item}
+                />
             </View>
             <View lightColor="black" darkColor="white" style={styles.line} />
             <View style={styles.buttonContainer}>
                 {Platform.OS === "ios" ? (
                     <>
                         <SignInWithAppleButton />
-                        <Text>{"\n"}</Text>
+                        <Text></Text>
                         <SignInWithGoogleButton />
                     </>
                 ) : (
@@ -67,9 +74,10 @@ const styles = StyleSheet.create({
     },
     toolList: {
         fontSize: 16,
+        marginBottom: 4,
     },
-    paragraph: {
-        fontSize: 24,
+    CTA: {
+        fontSize: 20,
     },
     line: {
         height: 1,
