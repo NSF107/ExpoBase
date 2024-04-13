@@ -12,7 +12,7 @@ export default function Home() {
                 Hello,{" "}
                 {user?.user_metadata.name
                     ? user?.user_metadata.name
-                    : "Stranger"}
+                    : "Unknown"}
                 !
             </Text>
             <Text style={styles.paragraph}>
