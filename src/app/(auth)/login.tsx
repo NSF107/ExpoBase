@@ -13,6 +13,8 @@ export default function Login() {
         // '📱 In-app purchases with Expo In-App-Purchases',
         // '🔔 Push notifications with Expo Notifications',
         // '📈 Performance Monitoring with Sentry',
+        // '📊 Feedback Monitoring with Sentry',
+        // '📝 In-app App Store reviews',
         '🔥 Type checking with TypeScript',
         '📁 File-based routing with Expo Router',
         '📏 Linter with ESLint',
