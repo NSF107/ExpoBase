@@ -1,4 +1,5 @@
-# ![ExpoBase](_media/noty-v3-logo.png)
+# ![ExpoBase](https://github.com/NSF107/ExpoBase)
+> The starter tempalte for building native apps with Expo and Supabase.
 
 ## Features
 
