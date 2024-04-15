@@ -1,30 +1,30 @@
 # ![ExpoBase](https://github.com/NSF107/ExpoBase)
+
 > The starter tempalte for building native apps with Expo and Supabase.
 
 ## Features
 
-- ⚡ Expo SDK 50 for building native apps
-- 🚀 Supabase Hosted Postges Database
-- 🔒 Supabase Authentication (Apple and Google implemented, many more providers available)
-- 🔐 AuthContext for handling authentication state
-- 📱 In-app purchases with Expo In-App-Purchases
-- 🔔 Push notifications with Expo Notifications
-- 📈 Performance Monitoring with Sentry
-- 📊 Feedback Monitoring with Sentry
-- 📝 In-app App Store reviews
-- 🔥 Type checking with TypeScript
-- 📁 File-based routing with Expo Router
-- 📏 Linter with ESLint
-- 💖 Code Formatter with Prettier
-- 🦺 Unit Testing with Jest and React Testing Library
-- 📡 Github Actions for CI/CD (Lint, Test, Build, ect.)
-- 📦 Integrated with Expo Application Services to build and publish the app
-- 💡 Absolute Imports using @ prefix
-- 🌈 Dark Mode support
-- 📄 MIT License
+-   ⚡ Expo SDK 50 for building native apps
+-   🚀 Supabase Hosted Postges Database
+-   🔒 Supabase Authentication (Apple and Google implemented, many more providers available)
+-   🔐 AuthContext for handling authentication state
+-   📱 In-app purchases with Expo In-App-Purchases
+-   🔔 Push notifications with Expo Notifications
+-   📈 Performance Monitoring with Sentry
+-   📊 Feedback Monitoring with Sentry
+-   📝 In-app App Store reviews
+-   🔥 Type checking with TypeScript
+-   📁 File-based routing with Expo Router
+-   📏 Linter with ESLint
+-   💖 Code Formatter with Prettier
+-   🦺 Unit Testing with Jest and React Testing Library
+-   📡 Github Actions for CI/CD (Lint, Test, Build, ect.)
+-   📦 Integrated with Expo Application Services to build and publish the app
+-   💡 Absolute Imports using @ prefix
+-   🌈 Dark Mode support
+-   📄 MIT License
 
 ## Quick Start
-
 
 ##  Buy Me a Coffee
 
