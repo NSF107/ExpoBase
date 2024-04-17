@@ -3,20 +3,32 @@
         "development": {
             "developmentClient": true,
             "distribution": "internal",
-            "channel": "development"
+            "channel": "development",
+            "env": {
+                "EXPO_PUBLIC_SUPABASE_URL": "https://wwvoxkccrhxufaaowszr.supabase.co"
+            }
         },
         "preview": {
             "distribution": "internal",
-            "channel": "preview"
+            "channel": "preview",
+            "env": {
+                "EXPO_PUBLIC_SUPABASE_URL": "https://wwvoxkccrhxufaaowszr.supabase.co"
+            }
         },
         "preview-apk": {
             "android": {
                 "buildType": "apk"
             },
-            "channel": "preview-apk"
+            "channel": "preview-apk",
+            "env": {
+                "EXPO_PUBLIC_SUPABASE_URL": "https://wwvoxkccrhxufaaowszr.supabase.co"
+            }
         },
         "production": {
-            "channel": "production"
+            "channel": "production",
+            "env": {
+                "EXPO_PUBLIC_SUPABASE_URL": "https://wwvoxkccrhxufaaowszr.supabase.co"
+            }
         }
     }
 }
