@@ -2,11 +2,10 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import { StyleSheet } from "react-native";
 import { Text, Button } from "@/components/theme/Themed";
-import { signOut } from "@/config/authHandler";
 
-export default function SignOutButton(props: any) {
+export default function UpgradeNowButton(props: any) {
     const router = useRouter();
-    const { title = "Sign Out" } = props;
+    const { title = "Upgrade Now!" } = props;
     const [isPressed, setIsPressed] = useState(false);
     const handlePressIn = () => {
         setIsPressed(true);
@@ -20,7 +19,9 @@ export default function SignOutButton(props: any) {
         <Button
             onPressIn={handlePressIn}
             onPressOut={handlePressOut}
-            onPress={() => signOut(router)}
+            onPress={() => {
+                console.log("Upgrade button pressed");
+            }}
             lightColor="black"
             darkColor="white"
             style={styles.button}

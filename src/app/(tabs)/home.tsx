@@ -1,20 +1,10 @@
 import { StyleSheet } from "react-native";
-
-import { Text, View, Button } from "@/components/theme/Themed";
+import { Text, View } from "@/components/theme/Themed";
 import { useAuth } from "@/context/AuthProvider";
-import { useState } from "react";
-import { router } from "expo-router";
+import UpgradeButton from "@/components/upgrade/UpgradeButton";
 
 export default function Home() {
     const { user } = useAuth();
-    const [isPressed, setIsPressed] = useState(false);
-    const handlePressIn = () => {
-        setIsPressed(true);
-    };
-
-    const handlePressOut = () => {
-        setIsPressed(false);
-    };
 
     return (
         <View style={styles.container}>
@@ -26,29 +16,10 @@ export default function Home() {
                 !
             </Text>
             <Text style={styles.paragraph}>
-                Welcome to the coolest app on the planet.{"\n"}{"\n"}
-                Upgrade to the starter plan to get access to this super secret feature!{"\n"}{"\n"}
-                Upgrade to the pro plan to get access to this super secret feature!{"\n"}
+                Welcome to the coolest app on the planet.{"\n"}{"\n"}{"\n"}{"\n"}
+                Upgrade your plan to get access to our premium features!{"\n"}{"\n"}
             </Text>
-            <Button
-                onPressIn={handlePressIn}
-                onPressOut={handlePressOut}
-                onPress={() => {
-                    console.log("Subscribe button pressed");
-                    router.push("/paywall");
-                }}
-                lightColor="black"
-                darkColor="white"
-                style={styles.button}
-            >
-                <Text
-                    lightColor={isPressed ? "grey" : "white"}
-                    darkColor={isPressed ? "grey" : "black"}
-                    style={styles.text}
-                >
-                    Upgrade
-                </Text>
-            </Button>
+            <UpgradeButton />
         </View>
     );
 }
