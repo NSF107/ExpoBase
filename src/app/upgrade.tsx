@@ -1,24 +1,39 @@
 import { Text, View } from "@/components/theme/Themed";
-import UpgradeNowButton from "@/components/upgrade/UpgradeNowButton";
 import { Link } from 'expo-router';
 import { StyleSheet } from "react-native";
 
-export default function Modal() {
+import RevenueCatUI, { PAYWALL_RESULT } from "react-native-purchases-ui";
+
+// Display current offering
+// export default function Paywall() {
   
-    return (
-        <View style={styles.container}>
-            <Text style={styles.upgradeText}>
-                No ads.{'\n'}
-                Offline access.{'\n'}
-                $5.99/month.
-            </Text>
-            <Text>Cancel anytime. Restrictions apply{'\n'}{'\n'}</Text>
-            <UpgradeNowButton />
-            <Link href="..">
-                <Text style={styles.link}>{'\n'}Dismiss</Text>
-            </Link>
-        </View>
-    );
+//     return (
+//         <View style={styles.container}>
+//             <View style={{ flex: 1 }}>
+//                 <RevenueCatUI.Paywall />
+//             </View>
+//             <Link href="..">
+//                 <Text style={styles.link}>{'\n'}Dismiss</Text>
+//             </Link>
+//         </View>
+//     );
+// }
+
+export async function presentPaywall(): Promise<boolean> {
+    // Present paywall for current offering:
+    const paywallResult: PAYWALL_RESULT = await RevenueCatUI.presentPaywall();
+
+    switch (paywallResult) {
+        case PAYWALL_RESULT.NOT_PRESENTED:
+        case PAYWALL_RESULT.ERROR:
+        case PAYWALL_RESULT.CANCELLED:
+            return false;
+        case PAYWALL_RESULT.PURCHASED:
+        case PAYWALL_RESULT.RESTORED:
+            return true;
+        default:
+            return false;
+    }
 }
 
 const styles = StyleSheet.create({
