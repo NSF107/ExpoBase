@@ -16,8 +16,7 @@ export default function Home() {
     };
 
     function handlePress() {
-        console.log('Button was pressed');
-        throw new Error('My first Sentry error!');
+        throw new Error('New Sentry error!');
     }
 
     return (
@@ -45,7 +44,7 @@ export default function Home() {
                     darkColor={isPressed ? "grey" : "black"}
                     style={styles.text}
                 >
-                    Press me
+                    Press me to test Sentry
                 </Text>
             </Button>
         </View>
