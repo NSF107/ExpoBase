@@ -1,10 +1,23 @@
 import { StyleSheet } from "react-native";
 
-import { Text, View } from "@/components/theme/Themed";
+import { Text, View, Button } from "@/components/theme/Themed";
 import { useAuth } from "@/context/AuthProvider";
+import { useState } from "react";
 
 export default function Home() {
     const { user } = useAuth();
+    const [isPressed, setIsPressed] = useState(false);
+    const handlePressIn = () => {
+        setIsPressed(true);
+    };
+
+    const handlePressOut = () => {
+        setIsPressed(false);
+    };
+
+    function handlePress() {
+        throw new Error('New Sentry error!');
+    }
 
     return (
         <View style={styles.container}>
@@ -18,6 +31,22 @@ export default function Home() {
             <Text style={styles.paragraph}>
                 Welcome to the coolest app on the planet.
             </Text>
+            <Button
+                onPress={handlePress}
+                onPressIn={handlePressIn}
+                onPressOut={handlePressOut}
+                lightColor="black"
+                darkColor="white"
+                style={styles.button}
+            >
+                <Text
+                    lightColor={isPressed ? "grey" : "white"}
+                    darkColor={isPressed ? "grey" : "black"}
+                    style={styles.text}
+                >
+                    Press me to test Sentry
+                </Text>
+            </Button>
         </View>
     );
 }
@@ -38,5 +67,19 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: "center",
         lineHeight: 24,
+    },
+    button: {
+        alignItems: "center",
+        justifyContent: "center",
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 4,
+        elevation: 3,
+    },
+    text: {
+        fontSize: 16,
+        lineHeight: 21,
+        fontWeight: "bold",
+        letterSpacing: 0.25,
     },
 });
