@@ -39,6 +39,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         },
         package: "com.nfett10.expoboilerplate",
         userInterfaceStyle: "automatic",
+        googleServicesFile: "./google-services.json",
     },
     web: {
         bundler: "metro",
