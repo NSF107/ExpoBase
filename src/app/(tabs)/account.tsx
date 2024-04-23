@@ -3,8 +3,8 @@ import { StyleSheet, Image } from "react-native";
 
 import SignOutButton from "@/components/auth/SignOutButton";
 import { View, Text, TextInput, Button } from "@/components/theme/Themed";
-import { supabase } from "@/config/supabaseClient";
 import { useAuth } from "@/context/AuthProvider";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function Account() {
     const { user, session } = useAuth();
