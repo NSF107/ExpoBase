@@ -39,7 +39,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         },
         package: "com.nfett10.expoboilerplate",
         userInterfaceStyle: "automatic",
-        googleServicesFile: "./google-services.json",
+        googleServicesFile: process.env.GOOGLE_SERVICES_JSON, // Path to the google-services.json file secret in EAS
     },
     web: {
         bundler: "metro",
