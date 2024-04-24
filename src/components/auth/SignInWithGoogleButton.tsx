@@ -3,7 +3,7 @@ import { useState } from "react";
 import { StyleSheet } from "react-native";
 
 import { Text, Button } from "@/components/theme/Themed";
-import { performGoogleOAuth } from "@/config/authHandler";
+import { performGoogleOAuth } from "@/lib/authHandler";
 
 export default function SignInWithGoogleButton() {
     const router = useRouter();

@@ -1,7 +1,7 @@
 import { Session, User } from "@supabase/supabase-js";
 import React, { useContext, createContext, useState, useEffect } from "react";
 
-import { supabase } from "@/config/supabaseClient";
+import { supabase } from "@/lib/supabaseClient";
 
 interface AuthProviderProps {
     children: React.ReactNode;
@@ -64,8 +64,6 @@ const AuthProvider = (props: AuthProviderProps) => {
     );
 };
 
-export const useAuth = () => {
-    return useContext(AuthContext);
-};
+export const useAuth = () => useContext(AuthContext);
 
 export default AuthProvider;

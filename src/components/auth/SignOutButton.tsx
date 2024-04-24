@@ -3,7 +3,7 @@ import { useState } from "react";
 import { StyleSheet } from "react-native";
 
 import { Text, Button } from "@/components/theme/Themed";
-import { signOut } from "@/config/authHandler";
+import { signOut } from "@/lib/authHandler";
 
 export default function SignOutButton(props: any) {
     const router = useRouter();
