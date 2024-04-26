@@ -8,13 +8,6 @@ import { useAuth } from "@/context/AuthProvider";
 export default function Home() {
     const { user } = useAuth();
     const [isPressed, setIsPressed] = useState(false);
-    const handlePressIn = () => {
-        setIsPressed(true);
-    };
-
-    const handlePressOut = () => {
-        setIsPressed(false);
-    };
 
     function handlePress() {
         throw new Error("New Sentry error!");
@@ -34,8 +27,8 @@ export default function Home() {
             </Text>
             <Button
                 onPress={handlePress}
-                onPressIn={handlePressIn}
-                onPressOut={handlePressOut}
+                onPressIn={() => setIsPressed(true)}
+                onPressOut={() => setIsPressed(false)}
                 lightColor="black"
                 darkColor="white"
                 style={styles.button}

@@ -14,13 +14,6 @@ export default function Account() {
     const [website, setWebsite] = useState<string | null>(null);
     const [avatarUrl, setAvatarUrl] = useState(null);
     const [isPressed, setIsPressed] = useState(false);
-    const handlePressIn = () => {
-        setIsPressed(true);
-    };
-
-    const handlePressOut = () => {
-        setIsPressed(false);
-    };
 
     useEffect(() => {
         let ignore = false;
@@ -127,8 +120,8 @@ export default function Account() {
                 />
             </View>
             <Button
-                onPressIn={handlePressIn}
-                onPressOut={handlePressOut}
+                onPressIn={() => setIsPressed(true)}
+                onPressOut={() => setIsPressed(false)}
                 onPress={updateProfile}
                 disabled={loading}
                 lightColor="black"

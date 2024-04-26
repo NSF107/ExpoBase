@@ -104,14 +104,6 @@ async function registerForPushNotificationsAsync() {
 export default function SendNotificationButton() {
     const [isPressed, setIsPressed] = useState(false);
 
-    const handlePressIn = () => {
-        setIsPressed(true);
-    };
-
-    const handlePressOut = () => {
-        setIsPressed(false);
-    };
-
     const [expoPushToken, setExpoPushToken] = useState("");
     const [notification, setNotification] = useState<
         Notifications.Notification | undefined
@@ -152,8 +144,8 @@ export default function SendNotificationButton() {
         <View>
             <Text>Here is your Expo push token: {expoPushToken}</Text>
             <Button
-                onPressIn={handlePressIn}
-                onPressOut={handlePressOut}
+                onPressIn={() => setIsPressed(true)}
+                onPressOut={() => setIsPressed(false)}
                 onPress={async () => {
                     await sendPushNotification(
                         expoPushToken,
