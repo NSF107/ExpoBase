@@ -1,17 +1,12 @@
-import { useState } from "react";
 import { StyleSheet } from "react-native";
 
 import SendNotificationButton from "@/components/pushNotifications/NotificationButton";
 import { Text, View, Button } from "@/components/theme/Themed";
 import { useAuth } from "@/context/AuthProvider";
+import TestSentryButton from "@/components/sentry/TestSentryButton";
 
 export default function Home() {
     const { user } = useAuth();
-    const [isPressed, setIsPressed] = useState(false);
-
-    function handlePress() {
-        throw new Error("New Sentry error!");
-    }
 
     return (
         <View style={styles.container}>
@@ -25,22 +20,7 @@ export default function Home() {
             <Text style={styles.paragraph}>
                 Welcome to the coolest app on the planet.{"\n"}
             </Text>
-            <Button
-                onPress={handlePress}
-                onPressIn={() => setIsPressed(true)}
-                onPressOut={() => setIsPressed(false)}
-                lightColor="black"
-                darkColor="white"
-                style={styles.button}
-            >
-                <Text
-                    lightColor={isPressed ? "grey" : "white"}
-                    darkColor={isPressed ? "grey" : "black"}
-                    style={styles.buttonText}
-                >
-                    Press me to test Sentry
-                </Text>
-            </Button>
+            <TestSentryButton />
             <Text>{"\n"}</Text>
             <SendNotificationButton />
         </View>
