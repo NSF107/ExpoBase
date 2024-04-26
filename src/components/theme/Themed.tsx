@@ -26,6 +26,13 @@ export type TextInputProps = ThemeProps & DefaultTextInput["props"];
 export type ButtonProps = ThemeProps &
     PressableProps & { style?: StyleProp<ViewStyle> };
 
+
+/**
+ * Function to get the theme color based on the color scheme to be used in the components
+ * @param props 
+ * @param colorName 
+ * @returns 
+ */ 
 export function useThemeColor(
     props: { light?: string; dark?: string },
     colorName: keyof typeof Colors.light & keyof typeof Colors.dark,
@@ -40,6 +47,11 @@ export function useThemeColor(
     }
 }
 
+/**
+ * Function to create a text with theme colors
+ * @param props 
+ * @returns 
+ */
 export function Text(props: TextProps) {
     const { style, lightColor, darkColor, ...otherProps } = props;
     const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
@@ -47,6 +59,11 @@ export function Text(props: TextProps) {
     return <DefaultText style={[{ color }, style]} {...otherProps} />;
 }
 
+/**
+ * Function to create a view with theme colors
+ * @param props 
+ * @returns 
+ */
 export function View(props: ViewProps) {
     const { style, lightColor, darkColor, ...otherProps } = props;
     const backgroundColor = useThemeColor(
@@ -57,6 +74,11 @@ export function View(props: ViewProps) {
     return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
 }
 
+/**
+ * Function to create a text input with theme colors
+ * @param props 
+ * @returns 
+ */
 export function TextInput(props: TextInputProps) {
     const { style, lightColor, darkColor, ...otherProps } = props;
     const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
@@ -64,12 +86,24 @@ export function TextInput(props: TextInputProps) {
     return <DefaultTextInput style={[{ color }, style]} {...otherProps} />;
 }
 
+/**
+ * Function to create a button with theme colors and pressable effect
+ * @param props 
+ * @returns 
+ */
 export function Button(props: ButtonProps) {
-    const { style, lightColor, darkColor, ...otherProps } = props;
+    const { style, lightColor, darkColor, onPressIn, onPressOut, ...otherProps } = props;
     const backgroundColor = useThemeColor(
         { light: lightColor, dark: darkColor },
         "background",
     );
 
-    return <Pressable style={[{ backgroundColor }, style]} {...otherProps} />;
+    return (
+        <Pressable 
+            style={[{ backgroundColor }, style]} 
+            onPressIn={onPressIn}
+            onPressOut={onPressOut}
+            {...otherProps} 
+        />
+    );
 }

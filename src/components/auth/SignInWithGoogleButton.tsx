@@ -8,18 +8,11 @@ import { performGoogleOAuth } from "@/lib/authHandler";
 export default function SignInWithGoogleButton() {
     const router = useRouter();
     const [isPressed, setIsPressed] = useState(false);
-    const handlePressIn = () => {
-        setIsPressed(true);
-    };
-
-    const handlePressOut = () => {
-        setIsPressed(false);
-    };
 
     return (
         <Button
-            onPressIn={handlePressIn}
-            onPressOut={handlePressOut}
+            onPressIn={() => setIsPressed(true)}
+            onPressOut={() => setIsPressed(false)}
             onPress={() => performGoogleOAuth(router)}
             lightColor="black"
             darkColor="white"
