@@ -12,7 +12,7 @@ import { UserFeedback } from "@sentry/react-native";
  */
 function ReportFeedbackToSentry( comments: string, user: any) {
     try {
-        throw new Error("New Sentry error!");
+        throw new Error("New Sentry issue!");
     } catch (error) {
         const sentryID = Sentry.captureException(error);
         const userFeedback: UserFeedback = {
@@ -26,6 +26,11 @@ function ReportFeedbackToSentry( comments: string, user: any) {
     }
 }
 
+/**
+ * Function to show how to use Sentry in a button component to report user feedback
+ * remove this function if you don't want to use it
+ * @returns 
+ */
 export default function TestSentryButton() {
     const [isPressed, setIsPressed] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
@@ -50,7 +55,7 @@ export default function TestSentryButton() {
                         borderRadius: 20,
                         padding: 35,
                         alignItems: 'center',
-                        shadowColor: colorScheme === "dark" ? "#fff" : "#000",
+                        shadowColor: colorScheme === "dark" ? "#fff" : "#000", // Set shadow color based on theme
                         shadowOffset: {
                         width: 0,
                         height: 2,
