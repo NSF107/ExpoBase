@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Image } from "react-native";
+
 import { View, Text, TextInput, Button } from "@/components/theme/Themed";
-import { supabase } from "@/config/supabaseClient";
 import { useAuth } from "@/context/AuthProvider";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function ProfileDetails() {
     const { user, session } = useAuth();

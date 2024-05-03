@@ -1,11 +1,10 @@
-import { useRouter } from "expo-router";
 import { useState } from "react";
 import { StyleSheet } from "react-native";
+
 import { Text, Button } from "@/components/theme/Themed";
 import { presentPaywall } from "@/components/upgrade/CurrentSubOfferings";
 
 export default function UpgradeButton(props: any) {
-    const router = useRouter();
     const { title = "Upgrade Account" } = props;
     const [isPressed, setIsPressed] = useState(false);
     const handlePressIn = () => {
@@ -21,7 +20,6 @@ export default function UpgradeButton(props: any) {
             onPressIn={handlePressIn}
             onPressOut={handlePressOut}
             onPress={() => {
-                // router.push("/upgrade");
                 presentPaywall();
             }}
             lightColor="black"

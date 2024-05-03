@@ -2,7 +2,7 @@ import * as AppleAuthentication from "expo-apple-authentication";
 import { useRouter } from "expo-router";
 
 import { useColorScheme } from "@/components/theme/useColorScheme";
-import { performAppleNativeAuth } from "@/config/authHandler";
+import { performAppleNativeAuth } from "@/lib/authHandler";
 
 export default function SignInWithAppleButton() {
     const router = useRouter();
